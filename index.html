@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sorry Muskan 💌</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Simple router container -->
+  <div id="app">
+    <!-- Page 1: Intro -->
+    <section class="page page-active" data-route="intro">
+      <div class="container">
+        <div class="card intro-card">
+          <h1 class="title">Hello Judge Mam 👩‍⚖️</h1>
+          <p class="text">
+            On previous two days I think I irritated you a lot. Aapko ek time pr even lga bhi hoga iski purani vaali ne isse sahi tag diya thaaa😂. So as my
+            <span class="highlight">praishchit</span> I made something for you.
+            Click the button below to have a look.
+          </p>
+          <button class="btn primary" data-next="question">
+            See what I made
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 2: Are you still angry? -->
+    <section class="page" data-route="question">
+      <div class="container">
+        <div class="card question-card">
+          <h2 class="title">Are you still angry?? 😶</h2>
+          <div class="buttons-row">
+            <button class="btn danger" id="btn-yes">
+              Yes 😤
+            </button>
+            <button class="btn ghost" id="btn-no">
+              No 🙃
+            </button>
+          </div>
+          <p class="text reaction-text" id="no-reaction"></p>
+          <button class="btn primary hidden" id="go-message" data-next="message">
+            I’m not angry, show message
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 3: Main sorry message -->
+    <section class="page" data-route="message">
+      <div class="container">
+        <div class="card message-card">
+          <h2 class="title">Big Sorry, Muskan 😭😭😭</h2>
+          <p class="text long-text">
+            Sorry Muskan for every <span class="highlight">shitttttttt talk</span>
+            jo meine pichle do dino mein kiiiiiiiiii. And like
+            mein thoda emotions mein beh jata hu phir mujhe smjh nhi aata
+            mein kyaa keh raha I'm really very sorry. Sorry meine aapki
+            privacy bhi thodi breach ki aapse aapki story puch kee.
+          </p>
+          <p class="text long-text">
+            I think meine subah bhi aapko yaa jo kal last message drop
+            kiya tha shayad mujhe nhi krna chahiye thaaa. But mein sachii
+            keh raha yrrrrr, like jo meine aapko apna incident btaya tha
+            uske baad se meine kabhi kisi ladki ko naa itna bulaya naa
+            kabhi kisi ko like kiya, but mujhe khud ko nhi ptaaa chala ki
+            aapke liye meri attachment itni high kaise chli gyi vo bhi
+            itne kmm time meinn.
+          </p>
+          <p class="text long-text">
+            But for sureeee from now today mein ye baat kabhi bhi mind pr
+            heavy nhi hone dunga. Andd haaa mujhe pta haiiiiiiiiiii aapne
+            mujhe kaha tha koi nhi, just chill..... but still mere ko aisa lga
+            ki mujhe aapse ye baat krni chahiye. And ye baat text meine
+            aapko isiliye nhi ki kyuki mein nhi chahta aap or irritate ho jao.
+          </p>
+          <p class="text long-text">
+            Atlast mein bss itna kahunga ki ye last 2 days mein hamari jo
+            bhi talks hui usse bhool kr hum as friends rahe.
+            <span class="highlight">pleaseeeeeeeeeeeeeeeeeee.</span>
+            Agar aapko meri koshish or baat achi lgi toh ekkk baarrrr
+            acheeeeee se smile vaaali emojiiiiiiiiiiiiiii ke saathhhhhhhhhhh
+            "oooooooooo bhaiiiiiiiiiiii saabbbbbbbbbbbbbb gazab" likh kr bhej do.
+          </p>
+
+          <button class="btn primary" data-next="final">
+            Click here for one final message
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 4: Final message -->
+    <section class="page" data-route="final">
+      <div class="container">
+        <div class="card final-card">
+          <h2 class="title">One Last Cheeky Request 😅</h2>
+          <p class="text long-text">
+            Aur please yrrrrrr Instagram prrr reply krdo,
+            meine aapki reel pr react kra aapne uska reply hi nhi kraaaaaaaaaaa.
+            I hope we'll be friends having good bond again, because mein
+            nhi cahhta ki vo Hide &amp; Seek game phir se start hoooooo
+            apne dono kaaaaaaaaaaaa. Agar aap naraj ho aaapp mujhe gaaliya nikal do prr please aise mat kro. Kyuki gaali se dr nhi lgta Judge mam aapki khamoshi se lgta haiiiiiiii haieennnn Aapko ek time pr even lga bhi hoga iski purani vaali ne isse sahi tag diya thaaa😂....
+          </p>
+          <p class="text long-text">
+            Please reply.................... but this time with your
+            <span class="highlight">true feedback</span>.
+            Aap jo kahoge mein maaannnnnnnn lungaaaaaaa.
+          </p>
+          <p class="text small-text">
+            (Ab yahan tak aa gyi ho toh ek cute sa reply to banta hai 😌)
+          </p>
+          <button class="btn ghost" data-next="intro">
+            Start again 🔁
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+:root {
+  /* Light pastel theme */
+  --bg: #ffeef4;              /* main background */
+  --bg-soft: #fff6fa;         /* card surround */
+  --card-bg: #ffffff;         /* card */
+  --accent: #ff4b7d;          /* main pink/red accent */
+  --accent-soft: rgba(255, 75, 125, 0.08);
+  --accent-danger: #ff8a8a;   /* for angry / yes */
+  --text: #3b0b26;
+  --muted: #7a3b57;
+  --border-subtle: rgba(255, 143, 171, 0.7);
+  --shadow-soft: 0 18px 40px rgba(255, 143, 171, 0.35);
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --transition-fast: 0.25s ease-out;
+  --transition-slow: 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #ffe0ec 0, #ffeef4 30%, #fffafc 100%);
+  color: var(--text);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+/* Background bubbles */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 193, 218, 0.75) 0, transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(255, 166, 201, 0.85) 0, transparent 48%),
+    radial-gradient(circle at 50% 100%, rgba(255, 210, 234, 0.9) 0, transparent 50%);
+  opacity: 0.85;
+  filter: blur(6px);
+  z-index: -2;
+  animation: float-bg 18s infinite alternate ease-in-out;
+}
+
+@keyframes float-bg {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(0, -30px, 0) scale(1.03);
+  }
+}
+
+/* Router pages */
+#app {
+  flex: 1;
+  display: flex;
+}
+
+.page {
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fade-out var(--transition-slow) forwards;
+}
+
+.page-active {
+  display: flex;
+  animation: fade-in-up var(--transition-slow) forwards;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0) scale(0.99);
+  }
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px 26px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Card soft glow */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at 0 0, rgba(255, 182, 193, 0.4), transparent 55%);
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Top accent line */
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 16%;
+  right: 16%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.9;
+}
+
+/* Typography */
+.title {
+  font-size: clamp(1.6rem, 3.6vw, 2.1rem);
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #b0164c;
+}
+
+.text {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+
+.long-text {
+  margin-top: 10px;
+}
+
+.small-text {
+  margin-top: 16px;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Buttons */
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+/* Main CTA (green earlier → pink now) */
+.btn.primary {
+  background: linear-gradient(120deg, #ff4b7d, #ff7ca3);
+  color: #fff7fb;
+  box-shadow: 0 14px 30px rgba(255, 75, 125, 0.45);
+}
+
+.btn.primary:hover {
+  transform: translateY(-1.5px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(255, 75, 125, 0.6);
+}
+
+/* Angry (YES) button – soft red */
+.btn.danger {
+  background: linear-gradient(135deg, #ff8a8a, #ffb5b5);
+  color: #5b1111;
+  box-shadow: 0 10px 24px rgba(255, 138, 138, 0.45);
+}
+
+.btn.danger:hover {
+  transform: translateY(-1.5px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(255, 138, 138, 0.6);
+}
+
+/* Neutral button */
+.btn.ghost {
+  background: #fff6fa;
+  color: var(--text);
+  border: 1px solid rgba(255, 182, 193, 0.9);
+}
+
+.btn.ghost:hover {
+  background: #ffe9f1;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* Layout helpers */
+.buttons-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.reaction-text {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: var(--accent-soft);
+  color: #b01242;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  min-height: 44px;
+}
+
+.reaction-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Make the message button clearly below the reaction text */
+#go-message {
+  margin-top: 16px;
+  align-self: center;
+}
+
+/* Page specific */
+.intro-card {
+  text-align: center;
+}
+
+.intro-card .btn {
+  margin-top: 20px;
+}
+
+.question-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message-card {
+  max-height: min(480px, 80vh);
+  overflow-y: auto;
+  background: linear-gradient(180deg, #ffffff 0, #fff6fa 100%);
+}
+
+/* Scrollbar styling */
+.message-card::-webkit-scrollbar,
+.final-card::-webkit-scrollbar {
+  width: 6px;
+}
+.message-card::-webkit-scrollbar-thumb,
+.final-card::-webkit-scrollbar-thumb {
+  background: rgba(255, 166, 201, 0.9);
+  border-radius: 999px;
+}
+
+.final-card {
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff 0, #ffe9f3 100%);
+}
+
+/* Utility */
+.hidden {
+  display: none;
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+  .card {
+    padding: 30px 32px 28px;
+  }
+
+  .buttons-row {
+    justify-content: center;
+  }
+
+  .reaction-text {
+    max-width: 560px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 16px;
+  }
+
+  .card {
+    padding: 20px 16px 18px;
+  }
+
+  .title {
+    font-size: 1.35rem;
+  }
+
+  .buttons-row {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .reaction-text {
+    margin-top: 10px;
+  }
+
+  #go-message {
+    width: 100%;
+  }
+}
